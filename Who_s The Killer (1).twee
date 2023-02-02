@@ -1,0 +1,257 @@
+:: StoryTitle
+Who's The Killer
+
+
+:: StoryData
+{
+  "ifid": "9771C8E8-A928-4958-B3B8-48995A8111AB",
+  "format": "Harlowe",
+  "format-version": "3.3.4",
+  "start": "Untitled Passage",
+  "tag-colors": {
+    "Begin": "red",
+    "startup": "yellow",
+    "eyes": "blue"
+  },
+  "zoom": 1
+}
+
+
+:: !!!! {"position":"575,1275","size":"100,100"}
+(SHOW PIC)
+(text-rotate-y:45)+(text-rotate-z:7)["We are the same person, but there is only room for one of us."]
+
+[[Stay to try to talk things out]]
+[[Run back to your room]]
+
+
+:: Check the closet {"position":"1125,1250","size":"100,100"}
+(show closet pic)
+
+<script>
+var audio= document.createElement('audio');
+audio.src= 
+'https://anbarks7.github.io/WhatsGoingOn/audio/Scratching sound.mp3'
+audio.loop = false;
+audio.play();
+</script>
+
+Nothing's in the closet, but you hear a sound again that sounds like it's coming from outside the room
+
+[[Walk outside your room to see what it is->Get out of bed & open the door]] 
+[[Look for your phone to call for help]]
+
+
+:: Check without weapon {"position":"1000,1225","size":"100,100"}
+There's nothing under the bed except for your junk.
+
+(SHOW PIC)
+
+[[Go back to sleep->Go back to sleep]] 
+[[Keep trying to figure out where the sound came from]]
+
+
+:: Get ladder {"position":"775,1000","size":"100,100"}
+You get distracted because the TV is still on, so you go [[check it out...->Get out of bed & open the door]]
+
+
+:: Get lamp as weapon {"position":"1175,950","size":"100,100"}
+There's nothing under the bed except for your junk.
+
+(SHOW PIC)
+
+[[Go back to sleep->Go back to sleep]] 
+[[Keep trying to figure out where the sound came from]]
+
+
+:: Get out of bed & open the door {"position":"600,1000","size":"100,100"}
+You don't see anything, but the light shining from the TV
+
+(ADD tv gif) 
+
+[[Go to the TV]]
+
+
+:: Get up & check it out {"position":"875,750","size":"100,100"}
+You're not sure where the sound came from. You look..
+
+
+[[Up in front of you]]
+[[Under the bed]]
+[[To the left]]
+
+
+:: Go back to sleep {"position":"1000,1000","size":"100,100"}
+(if:$avoidant < 2)[[You went back to sleep->Wake Up]]
+
+(set: $avoidant to it + 1)
+
+(if:$avoidant >= 3)[<html>
+<center>
+------------
+(text-style:"outline")[GAME OVER]
+------------
+You died while dreaming.
+</center>
+</html>]
+
+
+:: Go to the TV {"position":"575,1150","size":"100,100"}
+(show video)
+
+[[!!!!]]
+
+
+:: Keep trying to figure out where the sound came from {"position":"1175,1125","size":"100,100"}
+(show pic of room at an angle)
+
+[[Check outside the room->Get out of bed & open the door]]
+
+[[Check the closet]]
+
+
+:: Lock the door {"position":"700,1525","size":"100,100"}
+<html>
+<center>
+(show gif)
+------------
+(css: "font-size: 250%;")[(text-style:"outline")[GAME OVER]]
+------------
+You died while dreaming.
+</center>
+</html>
+
+
+:: Look for your phone to call for help {"position":"1125,1375","size":"100,100"}
+<script>
+var audio= document.createElement('audio');
+audio.src= 
+'https://anbarks7.github.io/WhatsGoingOn/audio/Scratching sound.mp3'
+audio.loop = true;
+audio.play();
+</script>
+
+You can't find your phone anywhere, and the sound keeps repeating.
+
+[[Prentend that this isn't happening & go back to sleep->Go back to sleep]] 
+[[Grab the lamp as a weapon & go outside->Get out of bed & open the door]] 
+
+
+:: Run back to your room {"position":"700,1400","size":"100,100"}
+(show pic)
+
+You see yourself laying on the bed.
+
+[[Lock the door]]
+[[Wake yourself up]]
+
+
+:: Stay to try to talk things out {"position":"575,1400","size":"100,100"}
+<html>
+<center>
+------------
+(text-style:"outline")[GAME OVER]
+------------
+You died while dreaming.
+</center>
+</html>
+
+
+:: To the left {"position":"750,875","size":"100,100"}
+<html>
+<center>
+<img src="https://anbarks7.github.io/WhatsGoingOn/images/totheleft copy.jpg" style>
+
+[[Go back to sleep->Go back to sleep]]                          
+[[Get out of bed & open the door]]
+</center>
+</html>
+
+
+:: Under the bed {"position":"1000,875","size":"100,100"}
+<html>
+<center>
+<img src="https://anbarks7.github.io/WhatsGoingOn/images/flashinglamp.gif" style>
+
+[[Get lamp as weapon]]
+[[Check without weapon]]
+
+
+:: Untitled Passage [eyes] {"position":"800,375","size":"100,100"}
+<html>
+<center>
+[[ <img src="https://anbarks7.github.io/WhatsGoingOn/images/eyes copy.jpg"> ->Wake Up]]
+</center>
+</html>
+
+
+:: Up in front of you {"position":"875,875","size":"100,100"}
+(ADD gif)
+
+[[Go back to sleep->Go back to sleep]]
+[[Get ladder]]
+
+
+:: Wake Up {"position":"800,500","size":"100,100"}
+You're alone in your apartment for the weekend, and while sleeping in your room, you hear [[this...]]
+
+
+
+
+:: Wake yourself up {"position":"825,1525","size":"100,100"}
+<html>
+<center>
+(css: "font-size: 250%;")[(text-colour:white)+(bg:(gradient: 0, 0,#ffffff,0.4346,#000000,1,#ffffff))[
+(text-style:"outline")[YOU SURVIVED!!]]
+---------]
+~ Be careful when you dream ~
+</center>
+</html>
+
+
+:: startup [startup] {"position":"650,600","size":"100,100"}
+{
+(set: $event to (random: 1, 3))
+}
+
+{
+(set: $avoidant to 0)
+}
+
+
+
+:: this... {"position":"800,625","size":"100,100"}
+(if: $event is 1)[<script>
+var audio= document.createElement('audio');
+audio.src= 
+'https://anbarks7.github.io/WhatsGoingOn/audio/WakeUp.mp3'
+audio.loop = false;
+audio.play();
+</script> ]
+(elseif: $event is 2)[<script>
+var audio= document.createElement('audio');
+audio.src= 
+'https://anbarks7.github.io/WhatsGoingOn/audio/Scratching sound.mp3'
+audio.loop = false;
+audio.play();
+</script>]
+(elseif: $event is 3)[<script>
+var audio= document.createElement('audio');
+audio.src= 
+'https://anbarks7.github.io/WhatsGoingOn/audio/Knock on the wall.mp3'
+audio.loop = false;
+audio.play();
+</script>]
+
+
+[[Ignore & go back to sleep->Go back to sleep]]
+[[Get up & check it out]]
+
+
+:: StoryStylesheet [stylesheet]
+tw-story[tags~="eyes"] {
+background-image: url("https://anbarks7.github.io/WhatsGoingOn/images/eyes copy.jpg");
+background-: no-repeat;
+background-size:cover;
+} 
+
